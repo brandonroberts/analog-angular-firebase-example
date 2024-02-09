@@ -15,7 +15,18 @@ export default defineConfig(({ mode }) => ({
   plugins: [analog({
     prerender: {
       routes: ['/', '/shipping']
-    }
+    },
+    nitro: {
+      preset: 'firebase',
+      firebase: {
+        nodeVersion: '20',
+        gen: 2,
+        httpsOptions: {
+          region: 'us-east1',
+          maxInstances: 100,
+        },
+      },
+    },    
   })],
   test: {
     globals: true,
